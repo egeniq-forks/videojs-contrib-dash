@@ -109,6 +109,10 @@ class Html5DashJS {
 
     this.mediaPlayer_.attachView(this.el_);
 
+    Html5DashJS.hooks('afterattachview').forEach((hook) => {
+      hook(this.player, this.mediaPlayer_);
+    });
+
     // Dash.js autoplays by default, video.js will handle autoplay
     this.mediaPlayer_.setAutoPlay(false);
 
